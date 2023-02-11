@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<div th:fragment="loggedInHeader">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand logo" href="/items/top"><img class="logo"src="../images/logo.png"></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#header_nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="header_nav">
+                <ul class="navbar-nav mr-auto">
+                    
+                    <th:block th:if="${user.email == 'admin@admin.com'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">管理ページ</a>
+                        </li>
+                    </th:block>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="header_cart">
+			<li class="padding"><a th:href="@{/users/detail/{id} (id=${user.id})}">ブックマーク</a></li>
+            
+            <li><a th:href="@{/users/cart/{id} (id=${user.id})}">カート</a></li>
+        </ul>
+
+        <!--form class="form_position"-->
+
+        
+    <form class="form_position" action="data" method="get" >
+		<input type="text" class="text" name="name" placeholder="商品名の一部を入れて検索">
+
+		<input type="text" class="text" name="description" placeholder="商品説明の一部を入れて検索">
+		<input type="submit" value="検索">
+
+	</form>
+	
+
+        <ul class="menu" id="menu">
+ 
+		  <!-- メニューボタン
+		   ここにマウスを乗せると下のコンテンツが表示される -->
+		  <li class="menu_list">
+		    <a href="/items/">TOP</a>
+		 
+		    <!-- メガメニュー
+		     一旦非表示にし、マウスを乗せたボタンに連動したコンテンツのみ表示 -->
+		    <div class="menu_contents flex">
+		      
+		    </div>
+		  </li>
+		 
+		  <li class="menu_list">
+		  	<a href="/items/data?name=women&description=">WOMEN</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		      	<li><a href="/items/data?name=women&description=">WOMEN TOP</a></li>
+		        <li><a href="/items/data?name=WOMEN&description=アウター">アウター</a></li>
+		        <li><a href="/items/data?name=WOMEN&description=トップス">トップス</a></li>
+		        <li><a href="/items/data?name=WOMEN&description=パンツ">パンツ</a></li>
+		        <li><a href="/items/data?name=womens/skirts">スカート</a></li>
+		        <li><a href="/items/data?name=womens/dresses">ワンピース</a></li>
+		        <li><a href="/items/data?name=womens/innnerwear">インナー・下着</a></li>
+		        <li><a href="/items/data?name=womens/accessories">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li>
+			        <form th:action="@{/logout}" method="post">
+		                <label for="logout">ログアウト</label>
+		                <input id="logout" type="submit" value="ログアウト">
+	                </form>
+                </li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="/items/data?name=オリジナル&description=Tシャツ">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		 
+		  <li class="menu_list">
+		    <a href="#">MEN</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		      	<li><a href="#">MEN TOP</a></li>
+		        <li><a href="#">アウター</a></li>
+		        <li><a href="/items/data?name=MENS&description=男性用シャツ">トップス</a></li>
+		        <li><a href="/items/data?name=MENS&description=男性用パンツ">パンツ</a></li>
+		        <li><a href="#">インナー・下着</a></li>
+		        <li><a href="#">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li>
+		        	<form th:action="@{/logout}" method="post">
+		                <label for="logout">ログアウト</label>
+		                <input id="logout" type="submit" value="ログアウト">
+	                </form>
+		        </li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="/items/data?name=オリジナル&description=Tシャツ">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		  
+		  <li class="menu_list">
+		    <a href="#">KIDS</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		      	<li><a href="#">KIDS TOP</a></li>
+		        <li><a href="#">アウター</a></li>
+		        <li><a href="#">トップス</a></li>
+		        <li><a href="#">パンツ</a></li>
+		        <li><a href="#">スカート</a></li>
+		        <li><a href="#">ワンピース</a></li>
+		        <li><a href="#">インナー・下着</a></li>
+		        <li><a href="#">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li>
+		        	<form th:action="@{/logout}" method="post">
+		                <label for="logout">ログアウト</label>
+		                <input id="logout" type="submit" value="ログアウト">
+	                </form>
+		        </li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="/items/data?name=オリジナル&description=Tシャツ">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		 
+		</ul>
+
+    </header>
+</div>
+ 
+<div th:fragment="notLoggedInHeader">
+    <header>
+        <ul class="header_nav">
+            <li>
+            <a href="/users/sign_up">
+                サインアップ
+            </a>
+        </li>
+        <li>
+            <a href="/users/login">
+                ログイン
+            </a>
+        </li>
+        </ul>
+        
+        <ul class="menu" id="menu">
+ 
+		  <!-- メニューボタン
+		   ここにマウスを乗せると下のコンテンツが表示される -->
+		  <li class="menu_list">
+		    <a href="/items/">TOP</a>
+		 
+		    <!-- メガメニュー
+		     一旦非表示にし、マウスを乗せたボタンに連動したコンテンツのみ表示 -->
+		    <div class="menu_contents flex">
+		      
+		    </div>
+		  </li>
+		 
+		  <li class="menu_list">
+		    <a href="/items/data?name=womens">WOMEN</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		        <li><a href="/items/data?name=womens">WOMEN TOP</a></li>
+		        <li><a href="#">アウター</a></li>
+		        <li><a href="#">トップス</a></li>
+		        <li><a href="#">パンツ</a></li>
+		        <li><a href="#">スカート</a></li>
+		        <li><a href="#">ワンピース</a></li>
+		        <li><a href="#">インナー・下着</a></li>
+		        <li><a href="#">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li><a href="/users/sign_up">新規会員登録</a>・<a href="#">ログイン</a></li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="#">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		 
+		  <li class="menu_list">
+		    <a href="#">MEN</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		      	<li><a href="#">MEN TOP</a></li>
+		        <li><a href="#">アウター</a></li>
+		        <li><a href="#">トップス</a></li>
+		        <li><a href="#">パンツ</a></li>
+		        <li><a href="#">インナー・下着</a></li>
+		        <li><a href="#">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li><a href="/users/sign_up">新規会員登録</a>・<a href="#">ログイン</a></li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="#">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		  
+		  <li class="menu_list">
+		    <a href="#">KIDS</a>
+		    <div class="menu_contents flex">
+		      <ul>
+		      	<li><a href="#">KIDS TOP</a></li>
+		        <li><a href="#">アウター</a></li>
+		        <li><a href="#">トップス</a></li>
+		        <li><a href="#">パンツ</a></li>
+		        <li><a href="#">スカート</a></li>
+		        <li><a href="#">ワンピース</a></li>
+		        <li><a href="#">インナー・下着</a></li>
+		        <li><a href="#">グッズ</a></li>
+		      </ul>
+		      <ul>
+		        <li><a href="/users/sign_up">新規会員登録</a>・<a href="#">ログイン</a></li>
+		        <li><a href="#">店舗検索</a></li>
+		        <li><a href="#">新作商品</a></li>
+		        <li><a href="#">期間限定価格</a></li>
+		        <li><a href="#">値下げ商品</a></li>
+		        <li><a href="#">ランキング</a></li>
+		        <li><a href="#">オリジナルTシャツ</a></li>
+		      </ul>
+		    </div>
+		  </li>
+		 
+		</ul>
+    </header>
+</div>
+ 
+</html>

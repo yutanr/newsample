@@ -1,0 +1,57 @@
+body{
+    margin:0;
+}
+
+img{
+    vertical-align: middle;
+    
+}
+
+.upper-img{
+    width:100%;
+    height:100vh;
+    
+}
+
+.beneath-img{
+    width:100%;
+    height:100vh;
+}
+
+.carousel-photo-upper .slick-dots li button:before{
+    font-size:80px;
+}
+
+.carousel-photo-beneath .slick-dots li button:before{
+    font-size:80px;
+}
+
+.carousel-photo-upper .slick-dots{
+    z-index:10;
+    bottom:20px;
+}
+
+.carousel-photo-beneath .slick-dots{
+    z-index:10;
+    bottom:20px;
+}
+
+.slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
+
+.carousel-photo-upper .slick-prev,
+.carousel-photo-beneath .slick-prev {
+    left: 10px;
+    z-index:1;
+}
+
+.carousel-photo-upper .slick-next,
+.carousel-photo-beneath .slick-next {
+  right: 36px;
+}
+
+
+.carousel-photo-upper .slick-prev {
+  left: 26px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/items/update/{id} (id=${item.id})}" th:object="${itemEditForm}">
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}"></span>
+            </li>
+        </ul>
+        <p>
+            <label for="name">商品名: </label>
+            <input type="text" id="name" th:field="*{name}" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="price">価格: </label>
+            <input type="text" id="price" th:field="*{price}" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="stock">在庫数: </label>
+            <input type="text" id="stock" th:field="*{stock}" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="description">商品説明: </label>
+            <input type="text" id="description" th:field="*{description}" autofocus="autofocus" >
+        </p>
+        <p><input type="submit" value="更新" /></p>
+    </form>
+    <h2>現在の画像</h2>
+    <p><img class="item_edit" th:src="@{/images/{image} (image=${item.image})}"></p>
+    <p><a th:href="@{/items/detail/{id} (id=${item.id})}">戻る</a></p>
+</div>
+</html>

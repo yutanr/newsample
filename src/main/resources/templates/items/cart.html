@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+			<div class="col-9">
+				<div class="card item">
+					<div class="row item_row">
+						<div class="col-6 item_figure">
+						    <img class="img-fluid" th:src="@{/images/{image} (image=${item.image})}">
+						</div>
+						<div class="col-6 item_description">
+							<h2 class="item_title">
+							    <a th:href="@{/items/detail/{id} (id=${item.id})}">
+                                    [[ ${item.name} ]]: 
+                                </a>
+                            </h2>
+                            <th:block th:if="${item.stock > 0}">
+                                <div>[[ ${item.price} ]]円</div>
+                            </th:block>
+							<th:block th:if="${item.stock <= 0}">
+                                <div>売り切れ</div>
+                            </th:block>
+							<div>[[ ${item.description} ]]</div>
+							<div>商品id:[[ ${item.id} ]]</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+</div>
+</html>

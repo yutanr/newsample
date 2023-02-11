@@ -1,0 +1,95 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+ ul li {
+     display: block;
+ }
+
+.header_cart {
+    list-style-type: none;
+    display: flex;
+    font-size: 13px;
+    position: relative;
+}
+
+.header_cart li {
+    position: absolute;
+    right: 0;
+}
+
+.padding {
+    padding-right: 45px;
+}
+.padding2 {
+    padding-right: 110px;
+}
+
+.form_position {
+    text-align: center;
+}
+
+
+.text {
+    width: 300px;
+    background-color: #f2f2f2;
+}
+
+/* メニューボタンのスタイル */
+.menu {
+  display: flex;
+  position: relative;
+}
+
+.menu .menu_list {
+  width: 33.33%;
+}
+
+.menu .menu_list > a {
+  border: 1px solid #ccc;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  transition: .3s;
+}
+
+.menu .menu_list > a:hover {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: red;
+  background: #fff;
+}
+ 
+/* メガメニューのスタイル */
+.menu_contents {
+  background: #fff;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.menu_contents li {
+  width: 100%;
+}
+
+.menu_contents li a {
+  color: #000;
+}
+
+.flex {
+	display: flex;
+	gap: 0px 200px;
+	justify-content: center;
+}
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12" style="height: 200px;"></div>
+		</div>
+		<!--メガメニュー用の余白-->
+			<h1>[[ ${title} ]]</h1>
+		<div th:each="item : ${user.orderItems}">
+			<hr class="cart_border">
+			<div class="cart_total">
+				<p><img class="cart_item" th:src="@{/images/{image} (image=${item.image})}"></p>
+				<h2 class="item_title" th:data-price="${item.price}">
+					<a th:href="@{/items/detail/{id} (id=${item.id})}">
+						[[ ${item.name} ]]: [[ ${item.price} ]]円
+					</a>
+				</h2>
+				<select name="num">
+					<option data-num="0" value="0">0</option>
+					<option data-num="1" value="1" selected>1</option>　/*　←初期値は「selected」を入れておく　*/
+					<option data-num="2" value="2">2</option>
+					<option data-num="3" value="3">3</option>
+					<option data-num="4" value="4">4</option>
+					<option data-num="5" value="5">5</option>
+				</select>
+				<form method="post" class="deletecart" th:action="@{/items/deletecart/{id} (id=${item.id})}">
+					<input type="submit" value="削除">
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<hr class="cart_border">
+
+
+	<div class="total_price container">
+		<span th:text="|合計金額： |"></span>
+		<input id="item_price_total" class="" name="小計" value="0円" readonly>
+	</div>
+	<form method="post" class="order container">
+		<input type="button" value="注文を確定する">
+	</form>
+
+
+</div>
+
+</html>

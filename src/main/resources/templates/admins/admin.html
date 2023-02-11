@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <a href="/items/create">新規追加</a>
+
+	<table class="item_table">
+		<thead>
+			<tr>
+				<th>名前</th>
+				<th>金額</th>
+				<th>在庫数</th>
+				<th>説明</th>
+				<th>画像</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item : ${items}">
+				<td>[[ ${item.name} ]]</td>
+				<td>[[ ${item.price} ]]</td>
+				<td>[[ ${item.stock} ]]</td>
+				<td>[[ ${item.description} ]]</td>
+				<td><img class="admin_item" th:src="@{/images/{image} (image=${item.image})}"></td>
+				<td>
+					<a th:href="@{/items/edit/{id} (id = ${item.id}) }">編集</a>
+					<form method="POST" th:action="@{/items/delete/{id} (id=${item.id})}">
+                        <input type="submit" value="削除" >
+                    </form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</html>

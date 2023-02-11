@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<div class="container contents">
+
+		<div class="row">
+			<div class="col-12" style="height: 200px;"></div>
+		</div>
+		<!--メガメニュー用の余白-->
+
+		<a href="/items/">TOP</a>&gt;<a th:href="|data?name=${name}|">[[${name}]]</a>
+
+		<div class="row">
+			<div class="col-3 item" th:each="item : ${items}">
+				<div class="row item_row">
+					<div class="col-12 item_figure">
+						<img class="img-fluid" th:src="@{/images/{image} (image=${item.image})}">
+					</div>
+					<div class="col-12 item_description">
+						<h2 class="item_title">
+							<a th:href="@{/items/detail/{id} (id=${item.id})}">
+								[[ ${item.name} ]]
+							</a>
+						</h2>
+						<form method="post" class="like" th:action="@{/items/toggleLike/{id} (id=${item.id})}">
+							<button type="submit">[[ ${item.likedUsers.contains(user) ? '★' : '☆'} ]]</button>
+						</form>
+						<th:block th:if="${item.stock > 0}">
+							<div>[[ ${item.price} ]]円</div>
+						</th:block>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer class="text-center">
+		<p class="footer-nav"><small><a href="#">返品・交換について</a>　|　<a href="#">お問い合わせ</a>　|　<a href="#">店舗検索</a>　|　<a
+					href="#">企業情報</a>　|　<a href="#">プレスリリース</a>　|　<a href="#">サステナビリティ</a>　|　<a
+					href="#">プライポリシー</a>　|　<a href="#">特定取引法に基づく表示</a>　|　<a href="#">利用規約</a></small></p><br>
+		<p class="footer-logo"><small>&copy;CodeCamp All Rights Reserved.</small></p>
+	</footer>
+</div>
+
+</html>

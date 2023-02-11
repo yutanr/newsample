@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+	
+	.main{
+		width:100%;
+	}
+	
+	.new_member{
+		border-bottom:1px solid black;
+		padding-bottom:40px;
+		margin-bottom:25px;
+	}
+	
+	.container{
+		width:80%;
+		margin:0 auto;
+	}
+	
+	h2{
+		border-bottom:1px solid black;
+		padding-bottom:25px;
+	}
+
+	.mail{
+		font-weight:bold;
+	}
+
+	#email{
+		width:500px;
+		height:40px;
+		font-size:17px;
+	}
+	
+	.pass{
+		font-weight:bold;
+	}
+	
+	#password{
+		width:500px;
+		height:40px;
+		font-size:17px;
+	}
+	
+	.residence{
+		font-weight:bold;
+	}
+	
+	#postal_code{
+		width:245px;
+		height:35px;
+		font-size:17px;
+	}
+	
+	#city{
+		width:500px;
+		height:38px;
+		font-size:17px;
+	}
+
+	.address{
+		display:flex;
+	}
+
+	#slc{
+		outline:none;
+		width:250px;
+		height:41px;
+		margin-left:5px;
+		font-size:17px;
+	}
+	
+	#address1{
+		width:500px;
+		height:38px;
+		font-size:17px;
+	}
+	
+	#address2{
+		width:500px;
+		height:38px;
+		font-size:17px;
+	}
+	
+	.name{
+		font-weight:bold;
+	}
+	
+	#name{
+		width:245px;
+		height:38px;
+		font-size:17px;
+	}
+	
+	#name2{
+		margin-left:5px;
+		width:243px;
+		height:38px;
+		font-size:17px;
+	}
+	
+	.confirm_button{
+		margin-right:30px;
+		background-color:red;
+		width:150px;
+		height:45px;
+		color:white;
+		border-radius:12px;
+		border:1px solid black;
+		float:right;
+		cursor:pointer;
+	}
+	
+	.confirm_button:hover{
+		opacity:0.8;
+		transition:0.3s;
+	}
+	
+</style>
+<div th:fragment="main">
+<div class="container">
+	<div class="new_member">
+    <h1>[[ ${title} ]]</h1>
+ 
+    <form th:action="@{/users/sign_up}" th:object="${signUpForm}" method="post">
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">エラー</span>
+            </li>
+        </ul>
+        <p>
+            <label for="name">ユーザー名: </label>
+            <input type="text" id="name" name="name" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="password">パスワード: </label>
+           <input type="password" id="password" name="password" >
+        </p>
+        <p>
+            <label for="email">メールアドレス: </label>
+            <input type="email" id="email" name="email" >
+        </p>
+        <p><input type="submit" value="登録" /></p>
+    </form>
+ 
+    <p><a th:href="@{/login}">Login</a></p>
+    
+    
+    
+    <form th:action="@{/users/sign_up}" th:object="${signUpForm}" method="post">
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">エラー</span>
+            </li>
+        </ul>
+    
+    <div class="register">
+	<h2>新規会員登録</h2>
+	
+	<p class="mail">メールアドレス</p>
+		<input type="email" id="email" name="email" placeholder="abc@team3.com">
+	
+	<p class="pass">パスワード</p>
+		<p>
+   		 <input type="password" id="password" name="pdicassword" placeholder="パスワードを入力してください">
+		</p>
+	<span class="residence">住所</span><br>
+	
+	<div class="address">
+	  <div class="postal_code">
+		<label>
+		<span>郵便番号</span><br>
+		<input type="text" id="postal_code" name="postal_code" minlength="7" maxlength="8" pattern="\d*" autocomplete="shipping postal-code">
+		</label>
+	</div>
+	
+	<div class="Prefectures">
+    	<label>
+    	<span>都道府県</span><br>
+    	<select id="slc" name="prefecture" autocomplete="shipping address-level1" >
+    	</label>
+        <option value="北海道">北海道</option>
+        <option value="青森県">青森県</option>
+        <option value="岩手県">岩手県</option>
+        <option value="宮城県">宮城県</option>
+        <option value="秋田県">秋田県</option>
+        <option value="山形県">山形県</option>
+        <option value="福島県">福島県</option>
+        <option value="茨城県">茨城県</option>
+        <option value="栃木県">栃木県</option>
+        <option value="群馬県">群馬県</option>
+        <option value="埼玉県">埼玉県</option>
+        <option value="千葉県">千葉県</option>
+        <option value="東京都">東京都</option>
+        <option value="神奈川県">神奈川県</option>
+        <option value="新潟県">新潟県</option>
+        <option value="富山県">富山県</option>
+        <option value="石川県">石川県</option>
+        <option value="福井県">福井県</option>
+        <option value="山梨県">山梨県</option>
+        <option value="長野県">長野県</option>
+        <option value="岐阜県">岐阜県</option>
+        <option value="静岡県">静岡県</option>
+        <option value="愛知県">愛知県</option>
+        <option value="三重県">三重県</option>
+        <option value="滋賀県">滋賀県</option>
+        <option value="京都府">京都府</option>
+        <option value="大阪府">大阪府</option>
+        <option value="兵庫県">兵庫県</option>
+        <option value="奈良県">奈良県</option>
+        <option value="和歌山県">和歌山県</option>
+        <option value="鳥取県">鳥取県</option>
+        <option value="島根県">島根県</option>
+        <option value="岡山県">岡山県</option>
+        <option value="広島県">広島県</option>
+        <option value="山口県">山口県</option>
+        <option value="徳島県">徳島県</option>
+        <option value="香川県">香川県</option>
+        <option value="愛媛県">愛媛県</option>
+        <option value="高知県">高知県</option>
+        <option value="福岡県">福岡県</option>
+        <option value="佐賀県">佐賀県</option>
+        <option value="長崎県">長崎県</option>
+        <option value="熊本県">熊本県</option>
+        <option value="大分県">大分県</option>
+        <option value="宮崎県">宮崎県</option>
+        <option value="鹿児島県">鹿児島県</option>
+        <option value="沖縄県">沖縄県</option>
+        </select>
+        </div>
+        </div>
+        
+       <p>
+        <label>
+        <span>市区町村</span><br>
+        <input type="text" id="city" name="city" autocomplete="shipping address-level2">
+        </label>
+       </p>
+       
+       <p>
+        <label>
+        <span>番地</span><br>
+        <input type="text" id="address1" name="address1" autocomplete="shipping address-line1">
+        </label>
+       </p>
+       
+       <p>
+        <label>
+        <span>建物名・部屋番号</span><br>
+        <input type="text" id="address2" name="address2" autocomplete="shipping address-line2">
+        </label>
+       </p>
+       
+       <label>
+       <span class="name">氏名</span><br>
+   		 <input type="text" id="name" name="name" autofocus="autofocus"><input type="text" id="name2" name="name2" autofocus="autofocus">
+   	   </label>
+ 	</div>
+ 	</div>
+ 	
+ 	<input type="submit" class="confirm_button" value="確定する" />
+ 	</div>
+ 	
+ 	<script>
+ 	var slc_elm = document.querySelector("#slc");
+	
+	slc_elm.addEventListener("focus", function(elm){
+	    if(elm.currentTarget.options.length >= 11){
+	        elm.currentTarget.size = "8";
+	    }
+	}, false);
+	
+	slc_elm.addEventListener("blur", function(elm){
+	    elm.currentTarget.size = "1";
+	}, false);
+	
+	slc_elm.addEventListener("change", function(elm){
+	    elm.currentTarget.blur();
+	}, false);
+	
+	</script>
+	
+</div>
+</html>
